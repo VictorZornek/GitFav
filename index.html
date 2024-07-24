@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Fav</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <img src="./assets/logo.svg" alt="Logo GitFav">
+
+            <div class="search">
+                <input type="text" placeholder="Digite o Github username que quer favoritar">
+                <button>&star; Favoritar</button>
+            </div>
+        </header>
+
+        <main>
+            <table>
+                <thead>
+                    <tr>Usuário</tr>
+                    <tr>Repositories</tr>
+                    <tr>Followers</tr>
+                    <tr>Ação</tr>
+                </thead>
+                <tbody>
+                    <tr class="user">
+                        <img src="https://github.com/victorzornek.png" alt="Imagem de Victor Zornek">
+                        <a class="user-info" href="https://github.com/victorzornek">
+                            <p>Victor Zornek</p>
+                            <span>/victorzornek</span>
+                        </a>
+                    </tr>
+                    <tr class="repositories">32</tr>
+                    <tr class="followers">4</tr>
+                    <tr class="remove-action">Remover</tr>
+                </tbody>
+            </table>
+        </main>
+    </div>
+</body>
+</html>
