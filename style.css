@@ -15,7 +15,7 @@
     --text-color: #E1E1E6;
     --placeholder-text-color: #7C7C8A;
     --empty-table-text: #4E5455;
-    --bg-even: #06181C;
+    --bg-even: #001e24;
     --bg-table-color: #06161B;
     --bg-input: #06161B;
     --bt-remove: #F75A68;
@@ -135,6 +135,10 @@ thead tr th:last-child {
 tbody tr td {
     font-size: 2rem;
     font-weight: bold;
+}
+
+table tr:nth-child(even) {
+    background: var(--bg-even);
 }
 
 
