@@ -6,10 +6,172 @@
 
 :root {
     font-size: 62.5%;
+    font-family: "Roboto", sans-serif;
 
-    --bg-color: #2F2F33;
+    --bg-color: #000000;
+    --bt-fav: #065E7C;
+    --bt-fav-hover: #FFFFFF;
+    --bg-table-head: #092D38;
+    --text-color: #E1E1E6;
+    --placeholder-text-color: #7C7C8A;
+    --empty-table-text: #4E5455;
+    --bg-even: #06181C;
+    --bg-table-color: #06161B;
+    --bg-input: #06161B;
+    --bt-remove: #F75A68;
 }
 
 body {
     background: var(--bg-color);
+    font-size: 1.6rem;
+    padding: 11.5rem 16rem;
+    color: var(--text-color);
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10rem;
+
+}
+
+.search {
+    width: 64rem;
+
+    display: flex;
+    gap: .8rem;
+}
+
+.search button, 
+input::placeholder, 
+.remove button {
+    font-family: "Roboto", sans-serif;
+}
+
+
+input {
+    width: 100%;
+
+    font-size: 1.6rem;
+
+    padding: 1.4rem;
+
+    border: none;
+    border-radius: .5rem;
+
+    background: var(--bg-input);
+    color: var(--text-color);
+
+}
+
+input::placeholder{
+    color: var(--placeholder-text-color);
+}
+
+.search button {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+
+    font-size: 1.4rem;
+    font-weight: bold;
+
+    text-transform: uppercase;
+    padding: 1.2rem 3.2rem;
+
+    border: none;
+    border-radius: .5rem;
+
+    color: var(--text-color); /* Cor do texto, que também será a cor da estrela */
+    background: var(--bt-fav);
+
+    cursor: pointer;
+}
+
+.search button .star-icon {
+    fill: currentColor; /* Permite que a cor do SVG siga a cor do texto */
+}
+
+.search button:hover {
+    color: var(--bt-fav); /* Muda a cor do texto, que também muda a cor da estrela */
+    background: var(--bt-fav-hover);
+}
+
+
+table {
+    width: 100%;
+    margin-top: 8.7rem;
+
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: var(--bg-table-head);
+}
+
+tbody {
+    background-color: var(--bg-table-color);
+}
+
+td {
+    padding: 2.4rem 4rem;
+}
+
+thead tr th{
+    font-size: 2rem;
+    text-align: start;
+    padding: 1.6rem 4rem;
+}
+
+thead tr th:first-child {
+    border-top-left-radius: .8rem;
+}
+
+thead tr th:last-child {
+    border-top-right-radius: .8rem;
+}
+
+tbody tr td {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+}
+
+.user a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.user a p {
+    margin-bottom: .7rem;
+}
+
+td a span {
+    font-weight: normal;
+}
+
+table img {
+    height: 5.6rem;
+    width: 5.6rem;
+
+    border-radius: 50%;
+}
+
+.remove button {
+    border: none;
+    background: none;
+    font-weight: bold;
+
+    font-size: 2rem;
+
+    color: var(--bt-remove);
+
+    cursor: pointer;
 }
