@@ -103,33 +103,47 @@ table {
     width: 100%;
     margin-top: 8.7rem;
 
-    border-collapse: collapse;
+    border-radius: 0 0 .8rem .8rem;
+    overflow: hidden; /* Garante que a borda arredondada seja visível */
+    position: relative; /* Necessário para z-index funcionar */
+    z-index: 1; /* Garante que o cabeçalho fique sobre o corpo da tabela */
+
 }
 
 thead {
     background-color: var(--bg-table-head);
+    border-radius: .8rem .8rem 0 0;
 }
 
 tbody {
     background-color: var(--bg-table-color);
+    max-height: 55vh;
+
+    display: block;
+    overflow-y: auto;
+}
+
+thead, tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed; /* Garante que a largura das colunas permaneça consistente */
+}
+
+thead tr {
+    position: sticky;
+    top: 0;
+    z-index: 1; /* Mantém o cabeçalho visível acima do conteúdo rolável */
 }
 
 td {
     padding: 2.4rem 4rem;
+    
 }
 
 thead tr th{
     font-size: 2rem;
     text-align: start;
     padding: 1.6rem 4rem;
-}
-
-thead tr th:first-child {
-    border-top-left-radius: .8rem;
-}
-
-thead tr th:last-child {
-    border-top-right-radius: .8rem;
 }
 
 tbody tr td {

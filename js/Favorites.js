@@ -1,34 +1,4 @@
-export class GithubUser {
-    static async search(username) {
-        const endpoint = `https://api.github.com/users/${username}`
-
-        try {
-            const response = await fetch(endpoint)
-
-            if(!response.ok) {
-                throw new Error(`Error fetching user: ${response.statusText}`);
-            }
-
-            const data = await response.json();
-
-            return {
-                login: data.login,
-                name: data.name,
-                public_repos: data.public_repos,
-                followers: data.followers
-            }
-
-        } catch(error) {
-            alert(error.message)
-
-            return null
-        }
-    }
-}
-
-
-
-
+import { GithubUser } from "./GithubUser.js"
 
 // classe que vai conter a lógica dos dados
 // como os dados serão estruturados
@@ -46,15 +16,46 @@ export class Favorites {
         this.entries = JSON.parse(localStorage.getItem('@git-fav:')) || []
     }
 
+    save() {
+        localStorage.setItem('@git-fav:', JSON.stringify(this.entries))
+    }
+
+
+    async addUser(username) {
+
+        try {
+            const userExists = this.entries.find(entry => entry.login.toLowerCase() == username.toLowerCase())
+
+            if(userExists) {
+                throw new Error('Usuário já está cadastrado!')
+            }
+
+            
+            const user = await GithubUser.search(username)
+
+            if(user.login == undefined) {
+                throw new Error('Usuário não encontrado!')
+            }
+
+            this.entries = [user, ...this.entries]
+            this.update()
+            this.save()
+
+        } catch(error) {
+            alert(error.message)
+        }
+
+    }
+
 
     delete(user) {
         const filteredEntries = this.entries.filter(entry => entry.login !== user.login)
     
         this.entries = filteredEntries
         this.update()
+        this.save()
     }
 }
-
 
 
 
@@ -68,6 +69,17 @@ export class FavoritesView extends Favorites {
         this.tbody = this.root.querySelector('table tbody')  // -> busca o tbody
 
         this.update()
+        this.onAddUser()
+    }
+
+    onAddUser() {
+        const addButton = this.root.querySelector('.search button')
+
+        addButton.onclick = () => {
+            const { value } = this.root.querySelector('.search input')
+            console.log('Botão clicado, valor:', value)
+            this.addUser(value)
+        }
     }
 
     update() {
